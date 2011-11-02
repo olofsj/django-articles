@@ -175,6 +175,7 @@ MARKUP_HELP = _("""Select the type of markup you are using in this article.
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=100)
     slug = models.SlugField(unique_for_year='publish_date')
     status = models.ForeignKey(ArticleStatus, default=ArticleStatus.objects.default)
     author = models.ForeignKey(User)
