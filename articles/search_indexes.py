@@ -10,7 +10,7 @@ class ArticleIndex(RealTimeSearchIndex):
     rendered = CharField(use_template=True, indexed=False)
 
     def index_queryset(self):
-        """Used when the entire index for model is updated."""
+        """Limit queryset to include only live articles."""
         return Article.objects.filter(status__is_live=True)
 
 
