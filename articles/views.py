@@ -22,7 +22,10 @@ def display_blog_page(request, tag=None, username=None, year=None, month=None, p
     than duplicate a bunch of code.  I'll probably revisit this in the future.
     """
 
-    context = {'request': request}
+    context = {
+            'request': request,
+            'disqus_forum': getattr(settings, 'DISQUS_FORUM_SHORTNAME', None),
+            }
     if tag:
         try:
             tag = get_object_or_404(Tag, slug__iexact=tag)
